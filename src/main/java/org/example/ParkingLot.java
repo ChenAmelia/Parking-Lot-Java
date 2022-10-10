@@ -21,11 +21,15 @@ public class ParkingLot {
     int regularSpotAvailable;
     int largeSpotAvailable;
 
-    public ParkingLot(int totalSpot, int compactSpotAvailable, int regularSpotAvailable, int largeSpotAvailable) {
+    int spotsRemaining = totalSpot;
+
+
+    public ParkingLot(int totalSpot, int compactSpotAvailable, int regularSpotAvailable, int largeSpotAvailable, int spotsRemaining) {
         this.totalSpot = totalSpot;
         this.compactSpotAvailable = compactSpotAvailable;
         this.regularSpotAvailable = regularSpotAvailable;
         this.largeSpotAvailable = largeSpotAvailable;
+        this.spotsRemaining = spotsRemaining;
     }
 
 
@@ -37,14 +41,17 @@ public class ParkingLot {
                 //parking motorbike in compact spot
                 System.out.println("You can park you motorbike in compact spot!");
                 compactSpotAvailable --;
+                spotsRemaining --;
             }else if(compactSpotAvailable == 0 && regularSpotAvailable > 0) {
                 //parking motorbike in regular spot
                 System.out.println("Sorry the compact spots are full, you can park your motorbike in regular spot.");
                 regularSpotAvailable --;
+                spotsRemaining --;
             } else if (compactSpotAvailable == 0 && regularSpotAvailable == 0 && largeSpotAvailable > 0) {
                 //parking motorbike in large spot
                 System.out.println("Sorry the compact spots and regulars spot are full, you can park your motorbike in regular spot.");
                 largeSpotAvailable --;
+                spotsRemaining--;
             } else {
                 System.out.println("Sorry, no spot available now.");
             }
@@ -55,10 +62,12 @@ public class ParkingLot {
                 //parking car in regular spot
                 System.out.println("You can park your car in regular spot!");
                 regularSpotAvailable --;
+                spotsRemaining--;
             } else if(regularSpotAvailable == 0 && compactSpotAvailable > 0) {
                 //parking car in compact spot
                 System.out.println("Sorry the regular spots are full, you can park your car in compact spots.");
                 compactSpotAvailable --;
+                spotsRemaining--;
             } else {
                 System.out.println("Sorry, no spot available now.");
             }
@@ -69,13 +78,15 @@ public class ParkingLot {
                 //Van park in large spot
                 System.out.println("You can park your van in large spot");
                 largeSpotAvailable --;
-            } else if (largeSpotAvailable == 0 && regularSpotAvailable > 0) {
+                spotsRemaining--;
+            } else if (largeSpotAvailable == 0 && regularSpotAvailable > 3) {
                 //Van park in regular spot and takes three spots
                 System.out.println("Sorry the large spots are full, you can park your van in regular spots.");
                 regularSpotAvailable -= 3;
+                spotsRemaining--;
+            } else {
+                System.out.println("Sorry, no spot available now.");
             }
-
-
         }
 
 

@@ -33,24 +33,44 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        ParkingLot lot = new ParkingLot(10, 3, 5, 2);
+        ParkingLot lot = new ParkingLot(10, 3, 5, 2, 10);
 
         Vehicle motorbike = new Vehicle(VehicleType.MOTORBIKE);
         Vehicle car = new Vehicle(VehicleType.CAR);
         Vehicle van = new Vehicle(VehicleType.VAN);
 
-        System.out.println("Welcome to the _nology parking lot! What is the type of your vehicle?");
+        System.out.println(lot.spotsRemaining);
+
+        System.out.println("Welcome to the _nology parking lot! We have" + lot.totalSpot + " spots in total.");
+        System.out.println("Please press a number to choose the type of your vehicle.");
         System.out.println("Please press 1 if your vehicle is a motorbike.");
         System.out.println("Please press 2 if your vehicle is a car.");
         System.out.println("Please press 3 if your vehicle is a van.");
 
-        while(lot.totalSpot > 0) {
 
+        while(lot.totalSpot > 0) {
+            System.out.println("=========================================================");
+
+            System.out.println("Please type a number to choose the type of your vehicle.");
             int vehicleType = scanner.nextInt();
             if(vehicleType == 1) {
-                System.out.println("The total spots are " + lot.totalSpot);
-                System.out.println("The compact spot available for motorbikes are " + lot.compactSpotAvailable);
+                System.out.println("Spots remaining " + lot.spotsRemaining);
+                System.out.println("Compact spots available: " + lot.compactSpotAvailable);
+                System.out.println("Regular spots available: " + lot.regularSpotAvailable);
+                System.out.println("Large spots available: " + lot.largeSpotAvailable);
                 lot.parkingVehicle(motorbike);
+            } else if(vehicleType == 2) {
+                System.out.println("Spots remaining " + lot.spotsRemaining);
+                System.out.println("Compact spots available: " + lot.compactSpotAvailable);
+                System.out.println("Regular spots available: " + lot.regularSpotAvailable);
+                System.out.println("Large spots available: " + lot.largeSpotAvailable);
+                lot.parkingVehicle(car);
+            }  else if(vehicleType == 3) {
+                System.out.println("Spots remaining " + lot.spotsRemaining);
+                System.out.println("Compact spots available: " + lot.compactSpotAvailable);
+                System.out.println("Regular spots available: " + lot.regularSpotAvailable);
+                System.out.println("Large spots available: " + lot.largeSpotAvailable);
+                lot.parkingVehicle(van);
             }
 
         }
