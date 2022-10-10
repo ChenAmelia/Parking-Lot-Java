@@ -28,6 +28,11 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
+
+        ParkingLot lot = new ParkingLot();
+        lot.parkVehicle();
+
+
         System.out.println("Hello world!");
     }
 }

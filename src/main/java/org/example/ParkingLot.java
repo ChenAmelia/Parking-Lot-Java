@@ -12,6 +12,73 @@ package org.example;
 //Write a function to remove vehicles
 //same logic with the parking vehicles method, just reverse, from increment to decrement
 
+import java.util.ArrayList;
+
 public class ParkingLot {
+
+    int totalSpot;
+    int compactSpotAvailable;
+    int regularSpotAvailable;
+    int largeSpotAvailable;
+
+    ArrayList<String> compactSpots = new ArrayList<>();
+    ArrayList<String> regularSpots = new ArrayList<>();
+    ArrayList<String> largeSpots = new ArrayList<>();
+
+    public void parkingVehicle(Vehicle vehicle) {
+        System.out.println("let's parking!");
+
+        //=================Parking motorbike in parking lot=================================
+        if(vehicle.getVehicleType().equals(VehicleType.MOTORBIKE)) {
+            if(compactSpotAvailable > 0) {
+                //parking motorbike in compact spot
+                System.out.println("You can park you motorbike in compact spot!");
+                compactSpotAvailable --;
+            }else if(compactSpotAvailable == 0 && regularSpotAvailable > 0) {
+                //parking motorbike in regular spot
+                System.out.println("Sorry the compact spots are full, you can park your motorbike in regular spot.");
+                regularSpotAvailable --;
+            } else if (compactSpotAvailable == 0 && regularSpotAvailable == 0 && largeSpotAvailable > 0) {
+                //parking motorbike in large spot
+                System.out.println("Sorry the compact spots and regulars spot are full, you can park your motorbike in regular spot.");
+                largeSpotAvailable --;
+            } else {
+                System.out.println("Sorry, no spot available now.");
+            }
+
+        //=================Parking car in parking lot=================================
+        } else if (vehicle.getVehicleType().equals(VehicleType.CAR)) {
+            if(regularSpotAvailable > 0) {
+                //parking car in regular spot
+                System.out.println("You can park your car in regular spot!");
+                regularSpotAvailable --;
+            } else if(regularSpotAvailable == 0 && compactSpotAvailable > 0) {
+                //parking car in compact spot
+                System.out.println("Sorry the regular spots are full, you can park your car in compact spots.");
+                compactSpotAvailable --;
+            } else {
+                System.out.println("Sorry, no spot available now.");
+            }
+
+        //=================Parking van in parking lot=================================
+        } else if (vehicle.getVehicleType().equals(VehicleType.VAN)) {
+            if(largeSpotAvailable > 0) {
+                //Van park in large spot
+                System.out.println("You can park your van in large spot");
+                largeSpotAvailable --;
+            } else if (largeSpotAvailable == 0 && regularSpotAvailable > 0) {
+                //Van park in regular spot and takes three spots
+                System.out.println("Sorry the large spots are full, you can park your van in regular spots.");
+                regularSpotAvailable -= 3;
+            }
+
+
+        }
+
+
+    }
+
+
+
 
 }
