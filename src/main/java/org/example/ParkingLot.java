@@ -52,7 +52,7 @@ public class ParkingLot {
                 System.out.println("Sorry the compact spots and regulars spot are full, you can park your motorbike in regular spot.");
                 largeSpotAvailable --;
                 spotsRemaining--;
-            } else {
+            } else if(spotsRemaining == 0) {
                 System.out.println("Sorry, no spot available now.");
             }
 
@@ -68,8 +68,9 @@ public class ParkingLot {
                 System.out.println("Sorry the regular spots are full, you can park your car in compact spots.");
                 compactSpotAvailable --;
                 spotsRemaining--;
-            } else {
+            } else if (regularSpotAvailable == 0 && compactSpotAvailable == 0) {
                 System.out.println("Sorry, no spot available now.");
+
             }
 
         //=================Parking van in parking lot=================================
@@ -83,10 +84,14 @@ public class ParkingLot {
                 //Van park in regular spot and takes three spots
                 System.out.println("Sorry the large spots are full, you can park your van in regular spots.");
                 regularSpotAvailable -= 3;
-                spotsRemaining--;
-            } else {
+                spotsRemaining -= 3;
+            } else if(largeSpotAvailable == 0 && regularSpotAvailable < 3){
                 System.out.println("Sorry, no spot available now.");
             }
+        } else if(spotsRemaining == 0) {
+            System.out.println("The parking lot is full!");
+        } else if(spotsRemaining == totalSpot) {
+            System.out.println("the parking lot is empty!");
         }
 
 

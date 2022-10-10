@@ -33,7 +33,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        ParkingLot lot = new ParkingLot(10, 3, 5, 2, 10);
+        ParkingLot lot = new ParkingLot(30, 10, 10, 10, 30);
 
         Vehicle motorbike = new Vehicle(VehicleType.MOTORBIKE);
         Vehicle car = new Vehicle(VehicleType.CAR);
@@ -41,7 +41,10 @@ public class Main {
 
         System.out.println(lot.spotsRemaining);
 
-        System.out.println("Welcome to the _nology parking lot! We have" + lot.totalSpot + " spots in total.");
+        System.out.println("Welcome to the _nology parking lot! We have " + lot.totalSpot + " spots in total.");
+        if(lot.spotsRemaining == lot.totalSpot) {
+            System.out.println("The parking lot is empty now!");
+        }
         System.out.println("Please press a number to choose the type of your vehicle.");
         System.out.println("Please press 1 if your vehicle is a motorbike.");
         System.out.println("Please press 2 if your vehicle is a car.");
@@ -73,6 +76,9 @@ public class Main {
                 lot.parkingVehicle(van);
             }
 
+        }
+        if(lot.spotsRemaining == 0) {
+            System.out.println("The parking lot is full now!");
         }
 
 
