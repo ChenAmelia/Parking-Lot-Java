@@ -21,12 +21,15 @@ public class ParkingLot {
     int regularSpotAvailable;
     int largeSpotAvailable;
 
-    ArrayList<String> compactSpots = new ArrayList<>();
-    ArrayList<String> regularSpots = new ArrayList<>();
-    ArrayList<String> largeSpots = new ArrayList<>();
+    public ParkingLot(int totalSpot, int compactSpotAvailable, int regularSpotAvailable, int largeSpotAvailable) {
+        this.totalSpot = totalSpot;
+        this.compactSpotAvailable = compactSpotAvailable;
+        this.regularSpotAvailable = regularSpotAvailable;
+        this.largeSpotAvailable = largeSpotAvailable;
+    }
+
 
     public void parkingVehicle(Vehicle vehicle) {
-        System.out.println("let's parking!");
 
         //=================Parking motorbike in parking lot=================================
         if(vehicle.getVehicleType().equals(VehicleType.MOTORBIKE)) {
